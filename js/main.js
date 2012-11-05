@@ -30,8 +30,8 @@ function pickRandomImage() {
 		$("#grid-overlay").css("height", $("#document-image").height() + 40);
 		// Size the containers to force the document to be big enough
 		// for the image
-		$("#background").css("width", $("#document-image").width());
-		$("#container").css("width", $("#document-image").width() + 178);
+		$("#background").css("width", $("#document-image").width() + 60);
+		$("#container").css("width", $("#document-image").width() + 228);
 	}).each(function(){
 		if(this.complete) {
 			$(this).trigger("load");

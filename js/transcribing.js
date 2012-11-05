@@ -89,10 +89,10 @@
 		console.log("loading in slice number: " + sliceId);
 		var slice = loadSlice(sliceId); 
 		console.log("slice is: " + slice);
-		console.log("scrolling document to show slice");
-		scrollDocumentToSlice(slice);
 		console.log("Drawing overlay shading");
 		drawOverlay(slice);
+		console.log("scrolling document to show slice");
+		scrollDocumentToSlice(slice);
 		console.log("loading current form");
 		loadCurrentForm(slice);
 		console.log("populating form with data");
@@ -121,10 +121,12 @@
 	// in a larger document
 	function drawOverlay(slice) {
 
+		var overlayHeight = (slice.bottom - slice.top) + 20;
+
 		// Draw the "highlight overlay"
 		$("#slice-overlay").css({
 			"top": slice.top - 10,
-			"height": (slice.bottom - slice.top) + 20
+			"height": overlayHeight
 		}).show();
 
 		// Draw the lowlight overlays
@@ -133,9 +135,15 @@
 		}).show();
 
 		$("#background-overlay-bottom").css({
-			"height": 1095 - slice.bottom - 11,
+			"height": $("#background img").outerHeight() - slice.bottom - 11,
 			"top": slice.bottom + 14
 		}).show();
+
+		// Resize the "window" of the snippet if it's
+		// not big enough to contain it
+		if(overlayHeight >= $("#background").outerHeight() - 40) {
+			$("#background").css("height", overlayHeight + 40);
+		}
 	}
 
 	// Populate the transcription form with data (if there is any)
@@ -300,6 +308,20 @@
         $("#is-header-button").click(function () {
         	loadForm("#header-form", true, headerLegend, "#header-actions");
         });
+
+        // Tooltips on focus
+        $('input').popover(
+        	{
+        		trigger: 'focus',
+        		content: function() {
+        			return $(this).attr("placeholder");
+        		},
+        		placement: 'top'
+        	}
+        );
+
+        // Trigger the popover on autofocussed elements
+        $('input[autofocus]').popover('show');
 	}
 
 })($);

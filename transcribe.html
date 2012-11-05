@@ -35,8 +35,8 @@
                     <!-- Form for headers - what they use to decide what type of document it is -->
                     <div id="header-form">
                         <div class="controls controls-row">
-                            <input type="text" name="year" id="year" class="span2" placeholder="Year: 1900" autofocus/>
-                            <input type="text" name="page" id="page" class="span2" placeholder="Page: 2"/>
+                            <input type="text" name="year" id="year" class="span3" placeholder="Year: 1900" autofocus/>
+                            <input type="text" name="page" id="page" class="span3" placeholder="Page: 2"/>
                             <label for="type" class="span1">Type:</label>
                             <select name="type" id="document-type" class="span2">
                                 <option value="birth">Birth</option>
@@ -46,47 +46,177 @@
                             </select>
                             <label for="template" class="span1">Template:</label>
                             <select name="template" id="form-template" class="span2">
-                                <option value="#deaths-form">Dorset 1754</option>
+                                <option value="#dorset-deaths-form">Dorset Deaths 1754</option>
+                                <option value="#1911-census-form">1911 Census</option>
+                                <option value="#1861-census-form">1861 Census</option>
+                                <option value="#standard-marriages">Standard Marriages</option>
+                                <option value="#marriages-banns">Marriages & Banns</option>
+                                <option value="#gaddesby-deaths">Gaddesby Deaths</option>
+                                <option value="#gaddesby-births">Gaddesby Births</option>
                             </select>
                         </div>
                         <div class="controls">
-                            <input type="text" name="other" id="other" placeholder="Other" class="span10 last"/>
+                            <input type="text" name="other" id="other" placeholder="Other Information" class="span12 last"/>
                         </div>
                     </div>
 
                     <!-- Deaths form for dorset 1754-->
-                    <div id="deaths-form">
+                    <div id="dorset-deaths-form">
                         <div class="controls controls-row">                
                             <input type="text" name="date" id="date" class="span2" placeholder="Date: dd/mm/yyy" autofocus/>
-                            <input type="text" name="first" id="first" placeholder="First name" class="span3"/>
-                            <input type="text" name="last" id="last" placeholder="Last name" class="span3"/>
-                            <label class="checkbox inline span1">
+                            <input type="text" name="first" id="first" placeholder="First name" class="span4"/>
+                            <input type="text" name="last" id="last" placeholder="Last name" class="span4"/>
+                            <label class="checkbox inline span2">
                                 <input type="checkbox" name="inferred" id="inferred" value="true"> Inferred?
                             </label>
                         </div>
                         <div class="controls controls-row">
-                            <input type="text" class="span2" name="fathersFirst" id="fathers-first" placeholder="Father's Name"/>
-                            <input type="text" class="span2" name="fathersSurname" id="fathers-surname" placeholder="Father's Surname"/>
-                            <input type="text" class="span2" name="mothersFirst" id="mothers-first" placeholder="Mother's Name"/>
-                            <input type="text" class="span2" name="mothersSurname" id="mothers-surname" placeholder="Mother's Surname"/>
+                            <input type="text" class="span3" name="fathersFirst" id="fathers-first" placeholder="Father's Name"/>
+                            <input type="text" class="span3" name="fathersSurname" id="fathers-surname" placeholder="Father's Surname"/>
+                            <input type="text" class="span3" name="mothersFirst" id="mothers-first" placeholder="Mother's Name"/>
+                            <input type="text" class="span3" name="mothersSurname" id="mothers-surname" placeholder="Mother's Surname"/>
                         </div>
                         <div class="controls">
-                            <input type="text" name="notes" id="notes" placeholder="Notes" class="span8 last"/>
+                            <input type="text" name="notes" id="notes" placeholder="Notes" class="span12 last"/>
                         </div>
                     </div>
 
                     <!-- 1911 Census -->
+                    <div id="1911-census-form">
+                        <div class="controls controls-row">
+                            <input type="text" name="first" id="first" placeholder="First name" class="span3"/>
+                            <input type="text" name="last" id="last" placeholder="Last name" class="span3"/>
+                            <input type="text" name="relationship" id="relationship" placeholder="Relationship to head" class="span3"/>
+                            <input type="text" name="age" id="age" placeholder="Age" class="span2"/>
+                        </div> 
+                        <div class="controls controls-row">
+                            <input type="text" name="marriageStatus" id="marriage-status" placeholder="Marriage status" class="span3"/>
+                            <input type="text" name="yearsMarried" id="years-married" placeholder="Years Married" class="span3"/>
+                            <input type="text" name="bornAlive" id="born-alive" placeholder="Born Alive" class="span2 slightlysmallerspan2"/>
+                            <input type="text" name="stillLiving" id="still-living" placeholder="Still Living" class="span2 slightlysmallerspan2"/>
+                            <input type="text" name="deadChildren" id="dead-children" placeholder="Dead Children" class="span2 slightlysmallerspan2"/>
+                        </div>
+                        <div id="controls controls-row">
+                            <input type="text" name="occupation" id="occupation" placeholder="Occupation" class="span4"/>
+                            <input type="text" name="employer" id="employer" placeholder="Employer, Worker or Own account" class="span4"/>
+                            <input type="text" name="atHome" id="at-home" placeholder="Works at home?" class="span4"/>
+                        </div>
+                        <div id="controls controls-row">
+                            <input type="text" name="birthplace" id="birthplace" placeholder="Birthplace" class="span4"/>
+                            <input type="text" name="nationality" id="nationality" placeholder="Nationality" class="span4"/>
+                            <input type="text" name="infirmity" id="infirmity" placeholder="Infirmity" class="span4"/>
+                        </div>
+                    </div>
 
                     <!-- 1861 Census -->
+                    <div id="1861-census-form">
+                        <div class="controls controls-row">
+                            <input type="text" name="schedule" id="schedule" placeholder="No of Schedule" class="span3"/>
+                            <input type="text" name="address" id="address" placeholder="Address" class="span4"/>
+                            <label class="checkbox inline span2 slightlysmallerspan2">
+                                <input type="checkbox" name="inhabited" id="inhabited"/> Inhabited?
+                            </label>
+                            <input type="text" name="uninhabited" id="uninhabited" placeholder="Uninhabited" class="span3"/>
+                        </div>
+                        <div class="controls controls-row">
+                            <input type="text" name="first" id="first" placeholder="First name" class="span2"/>
+                            <input type="text" name="last" id="last" placeholder="Last name" class="span2"/>
+                            <input type="text" name="relationship" id="relationship" placeholder="Relationship to head" class="span3"/>
+                            <input type="text" name="condition" id="condition" placeholder="Condition" class="span2"/>
+                            <input type="text" name="age" id="age" placeholder="Age" class="span2"/>
+                        </div>
+                        <div id="controls controls-row">
+                            <input type="text" name="occupation" id="occupation" placeholder="Occupation" class="span4"/>
+                            <input type="text" name="whereBorn" id="where-born" placeholder="Where born" class="span4"/>
+                            <input type="text" name="infirmity" id="infirmity" placeholder="Blind, Deaf or Dumb" class="span4"/>
+                        </div>
+                    </div>
 
-                    <!-- Fullborn Marriages -->
+                    <!-- Standard Marriages -->
+                    <div id="standard-marriages">
+                        <div id="controls controls-row">
+                            <input type="text" name="hisName" id="hisName" placeholder="His Name" class="span3"/>
+                            <input type="text" name="hisParish" id="hisParish" placeholder="His Parish" class="span3"/>
+                            <input type="text" name="herName" id="herName" placeholder="Her Name" class="span3"/>
+                            <input type="text" name="herName" id="herParish" placeholder="Her Parish" class="span3"/>
+                        </div>
+                        <div id="controls controls-row">
+                            <input type="text" name="venue" id="venue" placeholder="Venue" class="span3"/>
+                            <input type="text" name="method" id="method" placeholder="Method" class="span3"/>
+                            <input type="text" name="consenter" id="consenter" placeholder="Consenter" class="span3"/>
+                            <input type="text" name="date" id="date" placeholder="Date" class="span3"/>
+                        </div>
+                        <div id="controls controls-row">
+                            <input type="text" name="official" id="official" placeholder="Official's Name" class="span3"/>
+                            <input type="text" name="witness1" id="witness2" placeholder="Witness 1" class="span3"/>
+                            <input type="text" name="witness2" id="witness2" placeholder="Witness 2" class="span3"/>
+                            <input type="text" name="number" id="number" placeholder="Number" class="span2"/>
+                        </div>
+                    </div>
 
                     <!-- Marriages + Banns -->
+                    <div id="marriages-banns">
+                        <div id="controls controls-row">
+                            <input type="text" name="banns" id="banns" placeholder="Banns of Marriage" class="span12"/>
+                        </div>
+                        <div id="controls controls-row">
+                            <input type="text" name="hisName" id="hisName" placeholder="His Name" class="span3"/>
+                            <input type="text" name="hisParish" id="hisParish" placeholder="His Parish" class="span3"/>
+                            <input type="text" name="herName" id="herName" placeholder="Her Name" class="span3"/>
+                            <input type="text" name="herName" id="herParish" placeholder="Her Parish" class="span3"/>
+                        </div>
+                        <div id="controls controls-row">
+                            <input type="text" name="venue" id="venue" placeholder="Venue" class="span3"/>
+                            <input type="text" name="method" id="method" placeholder="Method" class="span3"/>
+                            <input type="text" name="consenter" id="consenter" placeholder="Consenter" class="span3"/>
+                            <input type="text" name="date" id="date" placeholder="Date" class="span3"/>
+                        </div>
+                        <div id="controls controls-row">
+                            <input type="text" name="official" id="official" placeholder="Official's Name" class="span3"/>
+                            <input type="text" name="witness1" id="witness2" placeholder="Witness 1" class="span3"/>
+                            <input type="text" name="witness2" id="witness2" placeholder="Witness 2" class="span3"/>
+                            <input type="text" name="number" id="number" placeholder="Number" class="span2"/>
+                        </div>
+                    </div>
 
                     <!-- Gaddesby Church Deaths -->
+                    <div id="gaddesby-deaths">
+                        <div class="controls controls-row">                
+                            <input type="text" name="date" id="date" class="span2" placeholder="Date: dd/mm/yyy" autofocus/>
+                            <input type="text" name="burialDate" id="burial-date" class="span2" placeholder="Buried: dd/mm/yyy"/>
+                            <input type="text" name="first" id="first" placeholder="First name" class="span3"/>
+                            <input type="text" name="last" id="last" placeholder="Last name" class="span3"/>
+                            <label class="checkbox inline span2">
+                                <input type="checkbox" name="inferred" id="inferred" value="true"> Inferred?
+                            </label>
+                        </div>
+                        <div class="controls">
+                            <input type="text" name="notes" id="notes" placeholder="Notes" class="span12 last"/>
+                        </div>
+                    </div>
 
                     <!-- Gaddesby Church Births -->
-                    
+                    <div id="gaddesby-births">
+                        <div class="controls controls-row">                
+                            <input type="text" name="date" id="date" class="span2" placeholder="Date: dd/mm/yyy" autofocus/>
+                            <input type="text" name="baptismDate" id="baptism-date" class="span2" placeholder="Baptised: dd/mm/yyy"/>
+                            <input type="text" name="first" id="first" placeholder="First name" class="span3"/>
+                            <input type="text" name="last" id="last" placeholder="Last name" class="span3"/>
+                            <label class="checkbox inline span2">
+                                <input type="checkbox" name="inferred" id="inferred" value="true"> Inferred?
+                            </label>
+                        </div>
+                        <div class="controls controls-row">
+                            <input type="text" class="span3" name="fathersFirst" id="fathers-first" placeholder="Father's Name"/>
+                            <input type="text" class="span3" name="fathersSurname" id="fathers-surname" placeholder="Father's Surname"/>
+                            <input type="text" class="span3" name="mothersFirst" id="mothers-first" placeholder="Mother's Name"/>
+                            <input type="text" class="span3" name="mothersSurname" id="mothers-surname" placeholder="Mother's Surname"/>
+                        </div>
+                        <div class="controls">
+                            <input type="text" name="notes" id="notes" placeholder="Notes" class="span12 last"/>
+                        </div>
+                    </div>
+
                 </div>
 
                 <div id="form-action-templates">

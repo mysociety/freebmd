@@ -87,6 +87,17 @@ img {
     max-width:none;
 }
 
+/* .span2 from twitter bootstrap, but a little narrower
+ * to counteract some dodgy spacing 
+ */
+label.slightlysmallerspan2 {
+    width:90px;
+}
+
+input.slightlysmallerspan2 {
+    width:115px;
+}
+
 /* Wrapper/Container divs used for centering */
 #container {
     margin:0 auto;
@@ -265,6 +276,11 @@ a#slice {
 
 legend {
     text-align:center;
+}
+
+#form-fields {
+    width:960px;
+    margin:0 auto;
 }
 
 /* ==========================================================================
