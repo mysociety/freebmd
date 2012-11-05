@@ -31,7 +31,7 @@ function pickRandomImage() {
 		// Size the containers to force the document to be big enough
 		// for the image
 		$("#background").css("width", $("#document-image").width() + 60);
-		$("#container").css("width", $("#document-image").width() + 228);
+		$("#container").css("width", $("#document-image").width() + 238);
 	}).each(function(){
 		if(this.complete) {
 			$(this).trigger("load");
