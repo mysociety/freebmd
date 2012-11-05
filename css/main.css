@@ -120,6 +120,7 @@ img {
     .transcribe #background {
         height:300px;
         overflow:hidden;
+        padding:0px;
     }
 
     /* Rotate controls */
