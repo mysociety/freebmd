@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body class="transcribe">
+
+        <div id="container">
+            <h1>Transcriber</h1>
+            <span id="counter" class="lead text-info"></span>
+            <div id="background">
+                <div id="background-overlay-top"></div>
+                <img src="img/document.jpeg" id="document-image"/>
+                <div id="slice-overlay"></div>
+                <div id="background-overlay-bottom"></div>
+            </div>
+            <div id="form">
+                <!-- Exactly which form is shown depends on what type of document the users says it is -->
+                <div id="form-templates">
+
+                    <!-- Form for headers - what they use to decide what type of document it is -->
+                    <div id="header-form">
+                        <div class="controls controls-row">
+                            <input type="text" name="year" id="year" class="span2" placeholder="Year: 1900" autofocus/>
+                            <input type="text" name="page" id="page" class="span2" placeholder="Page: 2"/>
+                            <label for="type" class="span1">Type:</label>
+                            <select name="type" id="document-type" class="span2">
+                                <option value="birth">Birth</option>
+                                <option value="marriage">Marriage</option>
+                                <option value="death">Death</option>
+                                <option value="census">Census</option>
+                            </select>
+                            <label for="template" class="span1">Template:</label>
+                            <select name="template" id="form-template" class="span2">
+                                <option value="#deaths-form">Dorset 1754</option>
+                            </select>
+                        </div>
+                        <div class="controls">
+                            <input type="text" name="other" id="other" placeholder="Other" class="span10 last"/>
+                        </div>
+                    </div>
+
+                    <!-- Deaths form -->
+                    <div id="deaths-form">
+                        <div class="controls controls-row">                
+                            <input type="text" name="date" id="date" class="span2" placeholder="Date: dd/mm/yyy" autofocus/>
+                            <input type="text" name="first" id="first" placeholder="First name" class="span3"/>
+                            <input type="text" name="last" id="last" placeholder="Last name" class="span3"/>
+                            <label class="checkbox inline span1">
+                                <input type="checkbox" name="inferred" id="inferred" value="true"> Inferred?
+                            </label>
+                        </div>
+                        <div class="controls controls-row">
+                            <input type="text" class="span2" name="fathersFirst" id="fathers-first" placeholder="Father's Name"/>
+                            <input type="text" class="span2" name="fathersSurname" id="fathers-surname" placeholder="Father's Surname"/>
+                            <input type="text" class="span2" name="mothersFirst" id="mothers-first" placeholder="Mother's Name"/>
+                            <input type="text" class="span2" name="mothersSurname" id="mothers-surname" placeholder="Mother's Surname"/>
+                        </div>
+                        <div class="controls">
+                            <input type="text" name="notes" id="notes" placeholder="Notes" class="span8 last"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="form-action-templates">
+
+                    <div id="transcribe-actions">
+                        <a id="previous-slice" class="btn btn-link">Previous</a>
+                        <button type="submit" class="btn btn-primary"><i class="icon-arrow-right icon-white"></i> Next</button>
+                        <a id="all-done" class="btn btn-success"><i class="icon-white icon-ok-sign"></i> Done</a>
+                    </div>
+
+                    <div id="header-actions">
+                        <a id="save-header-no-next" class="btn pull-left">Save and transcribe this segment</a>
+                        <button id="save-header-next" type="submit" class="btn btn-primary pull-right"><i class="icon-arrow-right icon-white"></i>Save and transcribe next segment</button>
+                    </div>
+
+                </div>
+
+                <form action="#" id="transcribe_form">
+
+                    <legend id="instructions"><!-- JS puts a string in here --></legend>
+
+                    <div id="header-button-wrapper">
+                        <!-- JS hides this if we're showing a header -->
+                        <a id="is-header-button" class="btn">This is a header</a>
+                    </div>
+
+                    <div id="form-fields"><!-- JS puts a form template in here --></div>
+                    
+                    <div class="form-actions"><!-- JS puts the actions in here --></div>
+
+                </form>
+            </div>
+        </div>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="js/jQueryRotateCompressed.2.2.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/transcribing.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+    </body>
+</html>
