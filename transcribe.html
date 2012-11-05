@@ -13,8 +13,8 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
         <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body class="transcribe">
@@ -24,7 +24,7 @@
             <span id="counter" class="lead text-info"></span>
             <div id="background">
                 <div id="background-overlay-top"></div>
-                <img src="img/document.jpeg" id="document-image"/>
+                <!-- JS puts the image in here -->
                 <div id="slice-overlay"></div>
                 <div id="background-overlay-bottom"></div>
             </div>
@@ -81,10 +81,11 @@
                     <div id="transcribe-actions">
                         <a id="previous-slice" class="btn btn-link">Previous</a>
                         <button type="submit" class="btn btn-primary"><i class="icon-arrow-right icon-white"></i> Next</button>
-                        <a id="all-done" class="btn btn-success"><i class="icon-white icon-ok-sign"></i> Done</a>
+                        <a id="all-done" class="btn btn-success pull-right"><i class="icon-white icon-ok-sign"></i> Done</a>
                     </div>
 
                     <div id="header-actions">
+                        <a id="previous-slice" class="btn btn-link pull-left">Previous</a>
                         <a id="save-header-no-next" class="btn pull-left">Save and transcribe this segment</a>
                         <button id="save-header-next" type="submit" class="btn btn-primary pull-right"><i class="icon-arrow-right icon-white"></i>Save and transcribe next segment</button>
                     </div>
