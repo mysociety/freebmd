@@ -3,8 +3,20 @@
 	// Variables for the transcribe page
 	var headerLegend = "Enter the details from the header and choose the form template to use.";
 	var formLegend = "Enter the details from the snippet you see into the form. Hit enter to move on.";
+	// Options for document templates
+	var templateOptions;
+	// Mapping for document type to options
+	var docTypeTemplates = {
+		"birth": ["#gaddesby-births"],
+		"marriage": ["#standard-marriages", "#marriages-banns"],
+		"death": ["#gaddesby-deaths", "#dorset-deaths-form"],
+		"census": ["#1911-census-form", "#1861-census-form"]
+	};
 	
 	$(function() {		
+
+		// Save full list of template options
+		templateOptions = $("#form-template option");
 
 		// Use rotation angle
 		var angle = parseFloat(localStorage.getItem("angle"));
@@ -99,8 +111,6 @@
 		populateTranscriptionForm(slice, sliceId);
 		console.log("updating counter");
 		updateSliceCounter(sliceId);
-		console.log("rebinding events");
-		bindFormEvents();
 	}
 
 	// Scroll the "window" of the document shown on
@@ -181,6 +191,9 @@
 				$("input#date").val("01/01/" + year);
 			}
 		}
+
+		// Filter the template options
+		$('select#document-type').trigger('change');
 	}
 
 	// Update the X / Y counter of slices
@@ -218,6 +231,10 @@
 		}
 
 		loadForm(templateId, isHeader, legend, actions);
+
+		// Rebind form events
+		console.log("rebinding events");
+		bindFormEvents();
 	}
 
 	// Load the right form template into the transcribe page
@@ -310,18 +327,34 @@
         });
 
         // Tooltips on focus
-        $('input').popover(
-        	{
+        $('input').tooltip({
         		trigger: 'focus',
-        		content: function() {
+        		title: function() {
         			return $(this).attr("placeholder");
         		},
         		placement: 'top'
         	}
         );
 
-        // Trigger the popover on autofocussed elements
-        $('input[autofocus]').popover('show');
+        // Trigger the tooltip on autofocussed elements
+        $('input[autofocus]').tooltip('show');
+
+        // Change events on the document type select elements
+        $('select#document-type').change(filterTemplateOptions);
 	}
+
+	// Filter template options to only those allowed
+	function filterTemplateOptions() {
+		// Update the template select element to show only
+    	// the right elements
+    	var allowedTemplates = docTypeTemplates[this.value];
+
+    	$('select#form-template')
+    		.html(templateOptions)
+    		.find('option')
+    		.filter(function(index) {
+    			return (jQuery.inArray(this.value, allowedTemplates)) == -1;
+    		}).remove();
+	} 
 
 })($);

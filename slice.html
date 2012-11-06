@@ -22,20 +22,27 @@
 
         <div id="container">
             <h1>Capture segments</h1>
-            <p>Line up the segment you want to capture, then hit enter. Hit <a id="slice-save" class="btn btn-success btn-small" href="transcribe.html"><i class="icon-ok-sign icon-white"></i> Next</a> when there are no more to do. (Don't worry about empty bits)</p>
+            <p>Line up the segment you want to capture, then hit enter. You can use the arrow keys or your mouse to move it.</p>
+            <p>Select headings and individual records; hit <a id="slice-save" class="btn btn-primary btn-small" href="transcribe.html"><i class="icon-arrow-right icon-white"></i> Next</a> when there are no more to do. (Don't worry about empty bits)</p>
             <div id="background">
                 <div id="background_padding">&nbsp;</div>
             </div>
             <div id="guillotine">
+                <div id="topgrip" class="ui-resizable-handle ui-resizable-n">
+                    <div class="gripwrapper">
+                        <i id="ngrip" class="icon-chevron-up"></i>
+                    </div>
+                </div>
                 <div id="guillotine-lines"></div>
-                <i id="nwgrip" class="icon-resize-vertical ui-resizable-handle ui-resizable-nw"></i>
-                <i id="negrip" class="icon-resize-vertical ui-resizable-handle ui-resizable-ne"></i>
-                <i id="swgrip" class="icon-resize-vertical ui-resizable-handle ui-resizable-sw"></i>
-                <i id="segrip" class="icon-resize-vertical ui-resizable-handle ui-resizable-se"></i>
+                <div id="bottomgrip" class="ui-resizable-handle ui-resizable-s">
+                    <div class="gripwrapper">
+                        <i id="sgrip" class="icon-chevron-down"></i>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <a href="#" id="slice">Capture</a>
+        <a href="#" id="slice"><i class="icon-camera"></i> Capture</a>
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.min.js"><\/script>')</script>

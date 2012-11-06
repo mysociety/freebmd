@@ -9,16 +9,32 @@
 			var angle = parseFloat(localStorage.getItem("angle"));
 			$("#background img").rotate(angle);
 
-			// Enter keypress
-			$(document).keypress(function (e) {
+			// Let people use up/down arrows to scroll the document
+			// has to be keydown not keypress for some reason
+			$(document).keydown(function (e) {
+				e.preventDefault();
+				var currentPos = $("#background").scrollTop();				
 				switch(e.which) {
-					// Carriage return/enter
+					case 38:
+						// Up key
+						if(currentPos > 0) {
+							$("#background").scrollTop(currentPos - 5);
+						}
+						break;
+					case 40: 
+						// Down key
+						if(currentPos < $("#background img").height()) {
+							$("#background").scrollTop(currentPos + 5);
+						}
+						break;					
 					case 13:
+						// Carriage return/enter
 						// flash the guillotine background to show
 						// that we've sliced it
 						slice("#guillotine");
 						break;
 				}
+				return false;
 			});
 
 			// Slice button click
@@ -30,7 +46,15 @@
 
 			// Make the background div "kinetic"
 			// (I'm not sure that's an adjective)
-			$("#background").kinetic();
+			$("#background").kinetic({
+				// trigger hardware acceleration in iOs
+				triggerHardware:true,
+				// don't let it move fast
+				maxVelocity:1,
+				// Don't let it scroll left/right, only up/down
+				x:false,
+				y:true
+			});
 
 			// Make the slice button stick to the bottom
 			positionFooter(); 
@@ -58,8 +82,8 @@
 						"ne":"#negrip",
 						"sw":"#swgrip",
 						"se":"#segrip",
-						"s":"",
-						"n":""
+						"s":"#sgrip",
+						"n":"#ngrip"
 					},
 					alsoResize: "#guillotine-lines"
 				});
@@ -67,7 +91,7 @@
 				$("#background_padding").css("height", height);
 				$("#background").css("height", height);
 
-			});
+			});			
 		}
 	});
 

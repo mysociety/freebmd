@@ -35,8 +35,8 @@
                     <!-- Form for headers - what they use to decide what type of document it is -->
                     <div id="header-form">
                         <div class="controls controls-row">
-                            <input type="text" name="year" id="year" class="span3" placeholder="Year: 1900" autofocus/>
-                            <input type="text" name="page" id="page" class="span3" placeholder="Page: 2"/>
+                            <input type="text" name="year" id="year" class="span2" placeholder="Year: 1900" autofocus/>
+                            <input type="text" name="page" id="page" class="span2" placeholder="Page: 2"/>
                             <label for="type" class="span1">Type:</label>
                             <select name="type" id="document-type" class="span2">
                                 <option value="birth">Birth</option>
@@ -45,7 +45,7 @@
                                 <option value="census">Census</option>
                             </select>
                             <label for="template" class="span1">Template:</label>
-                            <select name="template" id="form-template" class="span2">
+                            <select name="template" id="form-template" class="span3">
                                 <option value="#dorset-deaths-form">Dorset Deaths 1754</option>
                                 <option value="#1911-census-form">1911 Census</option>
                                 <option value="#1861-census-form">1861 Census</option>
@@ -84,7 +84,7 @@
                     <!-- 1911 Census -->
                     <div id="1911-census-form">
                         <div class="controls controls-row">
-                            <input type="text" name="first" id="first" placeholder="First name" class="span3"/>
+                            <input type="text" name="first" id="first" placeholder="First name" class="span3" autofocus/>
                             <input type="text" name="last" id="last" placeholder="Last name" class="span3"/>
                             <input type="text" name="relationship" id="relationship" placeholder="Relationship to head" class="span3"/>
                             <input type="text" name="age" id="age" placeholder="Age" class="span2"/>
@@ -111,7 +111,7 @@
                     <!-- 1861 Census -->
                     <div id="1861-census-form">
                         <div class="controls controls-row">
-                            <input type="text" name="schedule" id="schedule" placeholder="No of Schedule" class="span3"/>
+                            <input type="text" name="schedule" id="schedule" placeholder="No of Schedule" class="span3" autofocus/>
                             <input type="text" name="address" id="address" placeholder="Address" class="span4"/>
                             <label class="checkbox inline span2 slightlysmallerspan2">
                                 <input type="checkbox" name="inhabited" id="inhabited"/> Inhabited?
@@ -135,7 +135,7 @@
                     <!-- Standard Marriages -->
                     <div id="standard-marriages">
                         <div id="controls controls-row">
-                            <input type="text" name="hisName" id="hisName" placeholder="His Name" class="span3"/>
+                            <input type="text" name="hisName" id="hisName" placeholder="His Name" class="span3" autofocus/>
                             <input type="text" name="hisParish" id="hisParish" placeholder="His Parish" class="span3"/>
                             <input type="text" name="herName" id="herName" placeholder="Her Name" class="span3"/>
                             <input type="text" name="herName" id="herParish" placeholder="Her Parish" class="span3"/>
@@ -157,7 +157,7 @@
                     <!-- Marriages + Banns -->
                     <div id="marriages-banns">
                         <div id="controls controls-row">
-                            <input type="text" name="banns" id="banns" placeholder="Banns of Marriage" class="span12"/>
+                            <input type="text" name="banns" id="banns" placeholder="Banns of Marriage" class="span12" autofocus/>
                         </div>
                         <div id="controls controls-row">
                             <input type="text" name="hisName" id="hisName" placeholder="His Name" class="span3"/>
@@ -168,14 +168,13 @@
                         <div id="controls controls-row">
                             <input type="text" name="venue" id="venue" placeholder="Venue" class="span3"/>
                             <input type="text" name="method" id="method" placeholder="Method" class="span3"/>
-                            <input type="text" name="consenter" id="consenter" placeholder="Consenter" class="span3"/>
                             <input type="text" name="date" id="date" placeholder="Date" class="span3"/>
+                            <input type="text" name="official" id="official" placeholder="Official's Name" class="span3"/>
                         </div>
                         <div id="controls controls-row">
-                            <input type="text" name="official" id="official" placeholder="Official's Name" class="span3"/>
-                            <input type="text" name="witness1" id="witness2" placeholder="Witness 1" class="span3"/>
-                            <input type="text" name="witness2" id="witness2" placeholder="Witness 2" class="span3"/>
-                            <input type="text" name="number" id="number" placeholder="Number" class="span2"/>
+                            <input type="text" name="witness1" id="witness2" placeholder="Witness 1" class="span4"/>
+                            <input type="text" name="witness2" id="witness2" placeholder="Witness 2" class="span4"/>
+                            <input type="text" name="number" id="number" placeholder="Number" class="span4"/>
                         </div>
                     </div>
 
@@ -229,8 +228,8 @@
 
                     <div id="header-actions">
                         <a id="previous-slice" class="btn btn-link pull-left">Previous</a>
-                        <a id="save-header-no-next" class="btn pull-left">Save and transcribe this segment</a>
-                        <button id="save-header-next" type="submit" class="btn btn-primary pull-right"><i class="icon-arrow-right icon-white"></i>Save and transcribe next segment</button>
+                        <button id="save-header-next" type="submit" class="btn btn-primary pull-left"><i class="icon-arrow-right icon-white"></i>Save and transcribe next segment</button>
+                        <a id="save-header-no-next" class="btn pull-right"><i class="icon-repeat"></i> Transcribe this segment</a>
                     </div>
 
                 </div>
