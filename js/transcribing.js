@@ -30,6 +30,11 @@
 		// loaded (even when it's come from the cache)
 		$("#background img").one("load", function (e) {
 			console.log("transcribing: image has loaded - do resizing things")
+			// Place the zoom controls over the background image
+			$("#transcribe-controls").css({
+				"top": $("#background").position().top + 30,
+				"left": ($("#background").position().left + $("#background").outerWidth()) - 18
+			}).show();
 			loadSliceIntoTranscribePage(currentSlice);
 		}).each(function(){
 			if(this.complete) {

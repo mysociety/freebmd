@@ -282,22 +282,25 @@ legend {
 }
 
 #transcribe-controls {
+    display:none; /* JS puts it in place first */
     position: absolute;
     top: 11px;
     right: 5px;
     width: 35px;
     height: 32px;
-    z-index: 3;
+    z-index: 5;
 }
     #plus-control, #minus-control {
+        text-align: center;
         background-color: rgba(255,255,255,0.65);
         height: 25px;
         width: 35px;
         padding-top: 7px;
-        border:1px solid #666;
+        border:1px solid #ccc;
+        border-radius: 5px;
     }
     #minus-control {
-        margin-top:2px;
+        margin-top:4px;
     }
 
 
