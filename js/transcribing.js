@@ -55,7 +55,7 @@
         	else {
         		// Not a header, so load the current header to get
         		// info from it
-        		currentHeader = localStorage.getItem("header");
+        		currentHeader = JSON.parse(localStorage.getItem("header"));
         		// Save the name of the form template used so that we can
     			// show the right one if we go back to it
     			slices[currentSlice]["template"] = currentHeader.template;
@@ -281,6 +281,7 @@
 		// If we're given a slice see what template it has
 		if(slice !== null) {
 			console.log("slice is not null, so looking in slice data");
+			console.log(slice.template);
 			template = slice.template || false;
 			console.log("slice template is: " + template);
 		}
