@@ -32,6 +32,17 @@
 			var angle = getAngle("#background img");
 			localStorage.setItem("angle", angle);
 		});
+
+		// Setup things which need to know the size of the image
+		$("#background img").one("load", function (e) {
+			console.log("rotating: image has loaded - do resizing things");
+			// Size the grid overlay relative to the image
+			$("#grid-overlay").css("height", $("#background img").height() + 40);
+		}).each(function(){
+			if(this.complete) {
+				$(this).trigger("load");
+			}
+		});
 	});
 
 	// Functions

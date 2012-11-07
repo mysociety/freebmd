@@ -64,7 +64,10 @@
 			// so that we can calculate things from it's
 			// position later (once it's loaded).
 			// Also size the background container/padding accordingly
-			$("#background img").load(function () {
+			$("#background img").one("load", function () {
+				
+				console.log("slicing: image has loaded - do resizing things");
+
 				var height = $("#background img").height();
 				var width = $("#background").outerWidth();
 
@@ -78,20 +81,19 @@
 					maxWidth:width + 50,
 					minWidth:width + 50,
 					handles:{
-						"nw":"#nwgrip",
-						"ne":"#negrip",
-						"sw":"#swgrip",
-						"se":"#segrip",
-						"s":"#sgrip",
-						"n":"#ngrip"
+						"s":"#bottomgrip",
+						"n":"#topgrip"
 					},
 					alsoResize: "#guillotine-lines"
 				});
-
 				$("#background_padding").css("height", height);
 				$("#background").css("height", height);
 
-			});			
+			}).each(function(){
+				if(this.complete) {
+					$(this).trigger("load");
+				}
+			});		
 		}
 	});
 

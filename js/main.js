@@ -25,13 +25,14 @@ function pickRandomImage() {
 	}
 	
 	// Re-adjust things based on the new image
-	$("#document-image").one("load", function (e) {
+	$("#background img").one("load", function (e) {
+		console.log("image has loaded - do resizing things");
 		// Size the grid overlay relative to the image
-		$("#grid-overlay").css("height", $("#document-image").height() + 40);
+		$("#grid-overlay").css("height", $("#background img").height() + 40);
 		// Size the containers to force the document to be big enough
 		// for the image
-		$("#background").css("width", $("#document-image").width() + 60);
-		$("#container").css("width", $("#document-image").width() + 238);
+		$("#background").css("width", $("#background img").width() + 60);
+		$("#container").css("width", $("#background img").width() + 238);
 	}).each(function(){
 		if(this.complete) {
 			$(this).trigger("load");

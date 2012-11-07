@@ -13,6 +13,7 @@
 		"census": ["#1911-census-form", "#1861-census-form"]
 	};
 	
+	// Document ready
 	$(function() {		
 
 		// Save full list of template options
@@ -27,7 +28,8 @@
 
 		// Load slice from data supplied when the image has
 		// loaded (even when it's come from the cache)
-		$("#document-image").one("load", function (e) {
+		$("#background img").one("load", function (e) {
+			console.log("transcribing: image has loaded - do resizing things")
 			loadSliceIntoTranscribePage(currentSlice);
 		}).each(function(){
 			if(this.complete) {
@@ -131,22 +133,27 @@
 	// in a larger document
 	function drawOverlay(slice) {
 
-		var overlayHeight = (slice.bottom - slice.top) + 20;
+		// How much bigger to fudge the displayed segment:
+		// by default 10% on top and bottom (ish)
+		var fudgeFactor = Math.abs(((slice.bottom - slice.top) / 100) * 20);
+		var overlayHeight = (slice.bottom - slice.top) + (2 * fudgeFactor);
 
 		// Draw the "highlight overlay"
 		$("#slice-overlay").css({
-			"top": slice.top - 10,
+			"top": slice.top - fudgeFactor,
 			"height": overlayHeight
 		}).show();
 
 		// Draw the lowlight overlays
 		$("#background-overlay-top").css({
-			"height": slice.top - 10
+			"height": slice.top - fudgeFactor
 		}).show();
 
 		$("#background-overlay-bottom").css({
-			"height": $("#background img").outerHeight() - slice.bottom - 11,
-			"top": slice.bottom + 14
+			// +4 is for the borders/drop shadows which javascript/jquery 
+			// don't include in their calculations in .outerHeight()
+			"height": $("#background img").outerHeight() - slice.bottom - fudgeFactor,
+			"top": slice.bottom + fudgeFactor + 4
 		}).show();
 
 		// Resize the "window" of the snippet if it's
@@ -231,14 +238,17 @@
 		}
 
 		loadForm(templateId, isHeader, legend, actions);
-
-		// Rebind form events
-		console.log("rebinding events");
-		bindFormEvents();
 	}
 
 	// Load the right form template into the transcribe page
 	function loadForm(templateId, isHeader, legend, actions) {
+		// Kill any old tooltips
+        console.log("killing old tooltips");
+        $('input').tooltip('destroy');
+
+        // unbind any old events
+        $('input, select, a').unbind();
+
 		// Load the right div into the form
 		$("#form-fields").html($(templateId).html());
 		// Set the instructions
@@ -250,6 +260,15 @@
 		// Toggle the form classes to identify it's purpose
 		$("#transcribe_form").toggleClass("header", isHeader);
 		$("#transcribe_form").toggleClass("segment", !isHeader);
+
+		// Rebind form events
+		console.log("rebinding events");
+		bindFormEvents();
+
+		// Filter the template options if we're on a header form
+		if(isHeader) {
+			$('select#document-type').trigger('change');
+		}
 	}
 
 	// Get the current form template from localStorage either
@@ -327,6 +346,8 @@
         });
 
         // Tooltips on focus
+        // Make new tooltips
+        console.log("making new tooltips");
         $('input').tooltip({
         		trigger: 'focus',
         		title: function() {
@@ -337,14 +358,18 @@
         );
 
         // Trigger the tooltip on autofocussed elements
-        $('input[autofocus]').tooltip('show');
+        $('input[autofocus]').trigger('focus');
 
         // Change events on the document type select elements
+        console.log("Binding to document type change events");
         $('select#document-type').change(filterTemplateOptions);
 	}
 
 	// Filter template options to only those allowed
 	function filterTemplateOptions() {
+
+		console.log("Filtering template options");
+
 		// Update the template select element to show only
     	// the right elements
     	var allowedTemplates = docTypeTemplates[this.value];

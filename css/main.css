@@ -208,7 +208,7 @@ input.slightlysmallerspan2 {
 #guillotine {
     position:absolute;
     display:none;
-    height:74px;
+    height:83px;
     z-index: 2;
 }
     #guillotine-lines {
@@ -222,11 +222,15 @@ input.slightlysmallerspan2 {
 
     #topgrip,
     #bottomgrip {
-        height:14px;
+        height:18px;
     }
 
     #topgrip {
         top:0px;
+    }
+
+    #bottomgrip {
+        bottom:0px;
     }
 
     .gripwrapper {
@@ -276,6 +280,25 @@ legend {
     width:960px;
     margin:0 auto;
 }
+
+#transcribe-controls {
+    position: absolute;
+    top: 11px;
+    right: 5px;
+    width: 35px;
+    height: 32px;
+    z-index: 3;
+}
+    #plus-control, #minus-control {
+        background-color: rgba(255,255,255,0.65);
+        height: 25px;
+        width: 35px;
+        padding-top: 7px;
+    }
+    #minus-control {
+        margin-top:2px;
+    }
+
 
 /* ==========================================================================
    Helper classes
