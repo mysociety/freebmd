@@ -81,8 +81,8 @@
 					maxWidth:width + 50,
 					minWidth:width + 50,
 					handles:{
-						"s":"#bottomgrip",
-						"n":"#topgrip"
+						"s":"#actual-grip-s",
+						"n":"#actual-grip-n"
 					},
 					alsoResize: "#guillotine-lines"
 				});
