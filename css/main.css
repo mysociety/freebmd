@@ -294,6 +294,7 @@ legend {
         height: 25px;
         width: 35px;
         padding-top: 7px;
+        border:1px solid #666;
     }
     #minus-control {
         margin-top:2px;
